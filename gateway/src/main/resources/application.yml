@@ -1,0 +1,58 @@
+server:
+  port: 8088
+
+---
+
+spring:
+  profiles: default
+  cloud:
+    gateway:
+      routes:
+        - id: pet
+          uri: http://localhost:8081
+          predicates:
+            - Path=/pets/**,/Pet/** 
+        - id: store
+          uri: http://localhost:8082
+          predicates:
+            - Path=/items/**,/Item/**/orderItems/**,/OrderItem/**/customers/**,/Customer/** 
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+
+---
+
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: pet
+          uri: http://pet:8080
+          predicates:
+            - Path=/pets/**,/Pet/** 
+        - id: store
+          uri: http://store:8080
+          predicates:
+            - Path=/items/**,/Item/**/orderItems/**,/OrderItem/**/customers/**,/Customer/** 
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+server:
+  port: 8080
