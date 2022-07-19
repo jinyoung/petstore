@@ -12,6 +12,15 @@ public class CustomerHateoasProcessor
 
     @Override
     public EntityModel<Customer> process(EntityModel<Customer> model) {
+<<<<<<< HEAD
+=======
+        model.add(
+            Link
+                .of(model.getRequiredLink("self").getHref() + "/createAccount2")
+                .withRel("createAccount2")
+        );
+
+>>>>>>> f17a1f0 (commit msg)
         return model;
     }
 }

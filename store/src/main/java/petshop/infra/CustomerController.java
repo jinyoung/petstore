@@ -17,5 +17,29 @@ public class CustomerController {
 
     @Autowired
     CustomerRepository customerRepository;
+<<<<<<< HEAD
+=======
+
+    @RequestMapping(
+        value = "/{id}/createAccount2",
+        method = RequestMethod.PUT,
+        produces = "application/json;charset=UTF-8"
+    )
+    public Customer createAccount(
+        @PathVariable(value = "id") Long id,
+        HttpServletRequest request,
+        HttpServletResponse response
+    ) throws Exception {
+        System.out.println("##### /customer/createAccount  called #####");
+        Optional<Customer> optionalCustomer = customerRepository.findById(id);
+
+        optionalCustomer.orElseThrow(() -> new Exception("No Entity Found"));
+        Customer customer = optionalCustomer.get();
+        customer.createAccount();
+
+        customerRepository.save(customer);
+        return customer;
+    }
+>>>>>>> f17a1f0 (commit msg)
     // keep
 }

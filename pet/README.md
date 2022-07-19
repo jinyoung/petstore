@@ -5,8 +5,11 @@ You can download the Axon server from below url:
 https://axoniq.io/download  
 
 
+<<<<<<< HEAD
 ## My changes
 
+=======
+>>>>>>> f17a1f0 (commit msg)
 ```
 
 cd axon-server

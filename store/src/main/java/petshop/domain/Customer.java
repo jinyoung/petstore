@@ -20,10 +20,21 @@ public class Customer {
     @Embedded
     private Address address;
 
+<<<<<<< HEAD
+=======
+    @PostPersist
+    public void onPostPersist() {}
+
+>>>>>>> f17a1f0 (commit msg)
     public static CustomerRepository repository() {
         CustomerRepository customerRepository = StoreApplication.applicationContext.getBean(
             CustomerRepository.class
         );
         return customerRepository;
     }
+<<<<<<< HEAD
+=======
+
+    public void createAccount() {}
+>>>>>>> f17a1f0 (commit msg)
 }

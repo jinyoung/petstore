@@ -58,6 +58,17 @@
         </v-card-actions>
         <v-card-actions>
             <v-spacer></v-spacer>                        
+<<<<<<< HEAD
+=======
+            <v-btn
+                    v-if="!editMode"
+                    color="deep-purple lighten-2"
+                    text
+                    @click="createAccount"
+            >
+                CreateAccount
+            </v-btn>
+>>>>>>> f17a1f0 (commit msg)
         </v-card-actions>
 
         <v-snackbar
@@ -188,6 +199,24 @@
             change(){
                 this.$emit('input', this.value);
             },
+<<<<<<< HEAD
+=======
+            async createAccount() {
+                try {
+                    if(!this.offline) {
+                        var temp = await axios.put(axios.fixUrl(this.value._links.createAccount2.href))
+                        for(var k in temp.data) {
+                            this.value[k]=temp.data[k];
+                        }
+                    }
+
+                    this.editMode = false;
+                } catch(e) {
+                    this.snackbar.status = true
+                    this.snackbar.text = e
+                }
+            },
+>>>>>>> f17a1f0 (commit msg)
         },
     }
 </script>
